@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Bookshelf
+    </title>
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .content {
+            margin: 30px;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+        
+        .book img {
+            width: 10%;
+            height: 10%;
+            /* margin: 20px; */
+        }
+        
+        .navbar {
+            background-color: aqua;
+        }
+        
+        .nav-oper {
+            display: flex;
+            height: 100%;
+        }
+        
+        .nav-item-end {
+            border: 1px solid;
+            column-width: 200px;
+            height: 30px;
+            text-align: center;
+            border-right: none;
+            border-left: none;
+            padding-top: 10px;
+        }
+        
+        .nav-item-center {
+            border: 1px solid;
+            column-width: 600px;
+            height: 30px;
+            text-align: center;
+            border-right: none;
+            border-left: none;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div style="display:flex;margin-left: 20px;">
+            <i class="fas fa-book-open fa-3x" style="margin-right: 16px;"></i>
+            <h2 style="margin-top: 10px;">Library</h2>
+        </div>
+    </div>
+
+    <div class="nav-oper">
+        <div class="nav-item-end">
+            <i class="far fa-filter"></i>
+            <strong>
+                Filters</strong>
+        </div>
+        <div class="nav-item-center" style="border-bottom: 2px solid slateblue;
+        ">
+            <strong>
+                All (0)</strong>
+        </div>
+        <div class="nav-item-center">
+            <strong>
+                Favorites</strong>
+        </div>
+        <div class="nav-item-end">
+            <i class="fas fa-sort"></i>
+            <strong>
+                Sort By</strong>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Book 1 -->
+        <div class="book" style="">
+            <img src="book.jpg" alt="">
+            <br>
+            <small>The adventure of lily</small>
+        </div>
+        <!-- Book 2 -->
+        <div class="book" style="">
+            <img src="book.jpg" alt="">
+            <br>
+            <small>The adventure of lily</small>
+        </div>
+        <!-- Book 3 -->
+        <div class="book" style="">
+            <img src="book.jpg" alt="">
+            <br>
+            <small>The adventure of lily</small>
+        </div>
+        <!-- Book 4 -->
+        <div class="book" style="">
+            <img src="book.jpg" alt="">
+            <br>
+            <small>The adventure of lily</small>
+        </div>
+        <!-- Book 5 -->
+        <div class="book" style="">
+            <img src="book.jpg" alt="">
+            <br>
+            <small>The adventure of lily</small>
+        </div>
+        <!-- Book 6 -->
+        <div class="book" style="">
+            <img src="book.jpg" alt="">
+            <br>
+            <small>The adventure of lily</small>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+</script>
