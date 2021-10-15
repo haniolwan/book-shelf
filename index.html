@@ -22,19 +22,20 @@
         }
         
         .content {
-            margin: 30px;
+            margin-top: 40px;
+            margin-left: 80px;
             display: grid;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: auto auto auto auto auto;
         }
         
         .book img {
-            width: 10%;
-            height: 10%;
+            width: 60%;
+            height: 80%;
             /* margin: 20px; */
         }
         
         .navbar {
-            background-color: aqua;
+            /* background-color: aqua; */
         }
         
         .nav-oper {
@@ -61,15 +62,26 @@
             border-left: none;
             padding-top: 10px;
         }
+        
+        .logo {
+            display: flex;
+            margin-top: 10px;
+            margin-left: 50px;
+        }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
     <div class="navbar">
-        <div style="display:flex;margin-left: 20px;">
+        <div class="logo">
             <i class="fas fa-book-open fa-3x" style="margin-right: 16px;"></i>
             <h2 style="margin-top: 10px;">Library</h2>
+        </div>
+
+        <div style="display: flex;justify-content: end;">
+            <i class="fas fa-search fa-x"></i>
+            <i class="fas fa-ellipsis-v fa-x"></i>
         </div>
     </div>
 
@@ -98,39 +110,39 @@
     <div class="content">
         <!-- Book 1 -->
         <div class="book" style="">
-            <img src="book.jpg" alt="">
+            <img src="book-covers/book.jpg" alt="">
             <br>
-            <small>The adventure of lily</small>
+            <strong>The adventure of lily</strong>
         </div>
         <!-- Book 2 -->
         <div class="book" style="">
-            <img src="book.jpg" alt="">
+            <img src="book-covers/book1.png" alt="">
             <br>
-            <small>The adventure of lily</small>
+            <strong>The adventure of lily</strong>
         </div>
         <!-- Book 3 -->
         <div class="book" style="">
-            <img src="book.jpg" alt="">
+            <img src="book-covers/book.jpg" alt="">
             <br>
-            <small>The adventure of lily</small>
+            <strong>The adventure of lily</strong>
         </div>
         <!-- Book 4 -->
         <div class="book" style="">
-            <img src="book.jpg" alt="">
+            <img src="book-covers/book.jpg" alt="">
             <br>
-            <small>The adventure of lily</small>
+            <strong>The adventure of lily</strong>
         </div>
         <!-- Book 5 -->
         <div class="book" style="">
-            <img src="book.jpg" alt="">
+            <img src="book-covers/book.jpg" alt="">
             <br>
-            <small>The adventure of lily</small>
+            <strong>The adventure of lily</strong>
         </div>
         <!-- Book 6 -->
         <div class="book" style="">
-            <img src="book.jpg" alt="">
+            <img src="book-covers/book.jpg" alt="">
             <br>
-            <small>The adventure of lily</small>
+            <strong>The adventure of lily</strong>
         </div>
     </div>
 
