@@ -86,6 +86,51 @@
             display: inline-block;
             font-size: 16px;
         }
+        
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 26%;
+            /* Could be more or less, depending on screen size */
+        }
+        
+        input {
+            width: 120%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .modal-button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -142,28 +187,61 @@
         </div>
         <!-- Book 3 -->
         <div class="book " style=" ">
-            <img src="book-covers/book.jpg " alt=" ">
+            <img src="book-covers/book2.png " alt=" ">
             <br>
             <strong>The adventure of lily</strong>
         </div>
         <!-- Book 4 -->
         <div class="book " style=" ">
-            <img src="book-covers/book.jpg " alt=" ">
+            <img src="book-covers/book3.png " alt=" ">
             <br>
             <strong>The adventure of lily</strong>
         </div>
         <!-- Book 5 -->
         <div class="book " style=" ">
-            <img src="book-covers/book.jpg " alt=" ">
+            <img src="book-covers/book4.png " alt=" ">
             <br>
             <strong>The adventure of lily</strong>
         </div>
         <!-- Book 6 -->
         <div class="book " style=" ">
-            <img src="book-covers/book.jpg " alt=" ">
+            <img src="book-covers/book5.png " alt=" ">
             <br>
             <strong>The adventure of lily</strong>
         </div>
+    </div>
+
+
+    <button id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div id="close-modal" style="display: flex;justify-content: end;">
+                <i class="fas fa-times fa-x"></i>
+            </div>
+            <div style="text-align: center;">
+                <h1> Add new book</h1>
+            </div>
+            <div style="display: inline-grid;">
+                <!-- Book name -->
+                <label for="fname">Book name:</label>
+                <input type="text" id="name" name="name">
+                <!-- Author name -->
+                <label for="fname">Author name:</label>
+                <input type="text" id="author" name="author">
+                <!-- Book cover -->
+                <label for="fname">Book cover:</label>
+                <input type="file" id="cover" name="cover" accept="image/png, image/jpeg">
+                <!-- Submit button -->
+                <div class="modal-button">
+                    <button id="add-book">Add Book</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
@@ -172,4 +250,44 @@
 </html>
 
 <script>
+    document.getElementById('add-book').addEventListener('click', event => {
+        console.log('clicked button');
+    });
+
+    // Get the modal
+    let modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    let btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0];
+
+    // Close modal 
+    let close = document.getElementById('close-modal');
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        // close.onclick = function() {
+        //     console.log('close clicked');
+        //     // modal.style.display = "none";
+
+    // }
+    close.addEventListener('click', event => {
+        console.log('clicked button');
+    });
 </script>
