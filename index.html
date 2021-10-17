@@ -271,18 +271,32 @@
         modal.style.display = "block";
     }
 
+
+    function validateForm() {
+
+        let name = document.forms["Form"]["name"].value;
+        let author = document.forms["Form"]["author"].value;
+        let cover = document.forms["Form"]["cover"].value;
+        if (name == null || name == "", author == null || author == "", cover == null || cover == "") {
+            alert("Please Fill All Required Field");
+            return false;
+        } else {
+
+        }
+    }
+
     create.addEventListener('click', event => {
 
     });
 
-    function validateForm() {
-        var name = document.forms["Form"]["name"].value;
-        var author = document.forms["Form"]["author"].value;
-        var cover = document.forms["Form"]["cover"].value;
-        if (name == null || name == "", author == null || author == "", cover == null || cover == "") {
-            alert("Please Fill All Required Field");
-            return false;
+
+    let books = {
+        1: {
+            name: 'book 1',
+            author: 'Hani',
+            author: 'book-covers/book1.png',
         }
+
     }
 
 
