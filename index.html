@@ -77,7 +77,7 @@
             top: 20px;
         }
         
-        #add-book {
+        .add-book {
             background-color: #4CAF50;
             border: none;
             color: white;
@@ -145,7 +145,7 @@
         </div>
 
         <div class="create-button">
-            <button id="add-book">Add Book</button>
+            <button id="myBtn" class="add-book">Add Book</button>
         </div>
 
 
@@ -212,33 +212,34 @@
     </div>
 
 
-    <button id="myBtn">Open Modal</button>
+    <!-- <button>Open Modal</button> -->
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-            <div id="close-modal" style="display: flex;justify-content: end;">
-                <i class="fas fa-times fa-x"></i>
+            <div style="display: flex;justify-content: end;">
+                <i id="close-modal" class="fas fa-times fa-x"></i>
             </div>
             <div style="text-align: center;">
                 <h1> Add new book</h1>
             </div>
-            <div style="display: inline-grid;">
-                <!-- Book name -->
-                <label for="fname">Book name:</label>
-                <input type="text" id="name" name="name">
-                <!-- Author name -->
-                <label for="fname">Author name:</label>
-                <input type="text" id="author" name="author">
-                <!-- Book cover -->
-                <label for="fname">Book cover:</label>
-                <input type="file" id="cover" name="cover" accept="image/png, image/jpeg">
-                <!-- Submit button -->
-                <div class="modal-button">
-                    <button id="add-book">Add Book</button>
-                </div>
+            <form method="post" name="Form" onsubmit="return validateForm()" action="">
+                <div style="display: inline-grid;">
+                    <!-- Book name -->
+                    <label for="name">Book name:</label>
+                    <input type="text" id="name" name="name">
+                    <!-- Author name -->
+                    <label for="author">Author name:</label>
+                    <input type="text" id="author" name="author">
+                    <!-- Book cover -->
+                    <label for="cover">Book cover:</label>
+                    <input type="file" id="cover" name="cover" accept="image/png, image/jpeg">
+                    <!-- Submit button -->
+                    <div class="modal-button">
+                        <button id="add-btn" class="add-book" type="submit">Add Book</button>
+                    </div>
+            </form>
             </div>
         </div>
 
@@ -250,9 +251,9 @@
 </html>
 
 <script>
-    document.getElementById('add-book').addEventListener('click', event => {
-        console.log('clicked button');
-    });
+    // document.getElementById('add-book').addEventListener('click', event => {
+    //     console.log('clicked button');
+    // });
 
     // Get the modal
     let modal = document.getElementById("myModal");
@@ -260,21 +261,35 @@
     // Get the button that opens the modal
     let btn = document.getElementById("myBtn");
 
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close")[0];
-
     // Close modal 
     let close = document.getElementById('close-modal');
+
+    let create = document.getElementById('add-btn');
 
     // When the user clicks on the button, open the modal
     btn.onclick = function() {
         modal.style.display = "block";
     }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
+    create.addEventListener('click', event => {
+
+    });
+
+    function validateForm() {
+        var name = document.forms["Form"]["name"].value;
+        var author = document.forms["Form"]["author"].value;
+        var cover = document.forms["Form"]["cover"].value;
+        if (name == null || name == "", author == null || author == "", cover == null || cover == "") {
+            alert("Please Fill All Required Field");
+            return false;
+        }
     }
+
+
+
+
+
+
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
@@ -282,12 +297,9 @@
                 modal.style.display = "none";
             }
         }
-        // close.onclick = function() {
-        //     console.log('close clicked');
-        //     // modal.style.display = "none";
-
-    // }
+        // When the user clicks on close icon, close modal
     close.addEventListener('click', event => {
-        console.log('clicked button');
+        modal.style.display = "none";
+
     });
 </script>
