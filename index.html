@@ -28,9 +28,9 @@
             grid-template-columns: auto auto auto auto auto;
         }
         
-        .book img {
-            width: 30%;
-            height: 80%;
+        img {
+            width: 36%;
+            /* height: 80%; */
             /* margin: 20px; */
         }
         
@@ -127,6 +127,10 @@
         .modal-button {
             margin-top: 20px;
         }
+        
+        .checked {
+            color: orange;
+        }
     </style>
 </head>
 
@@ -154,7 +158,7 @@
                 Filters</strong>
         </div>
         <div class="nav-item-center " style="border-bottom: 2px solid slateblue; ">
-            <strong>
+            <strong id="books-counter">
                 All (0)</strong>
         </div>
         <div class="nav-item-center ">
@@ -168,19 +172,8 @@
         </div>
     </div>
 
-    <div class="content">
-        <!-- Book  -->
-        <div class="book">
-            <img id="book-cover" class="book-cover" src="" alt="book">
-            <br>
-            <strong id="book-title"></strong>
-            <small id="book-author"></small>
-        </div>
-
+    <div id="content" class="content">
     </div>
-
-
-    <!-- <button>Open Modal</button> -->
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -219,36 +212,77 @@
 </html>
 
 <script>
-    // document.getElementById('add-book').addEventListener('click', event => {
-    //     console.log('clicked button');
-    // });
-
-    let books = {
-        1: {
+    let books = [{
             title: 'The adventure of lily',
             author: 'Hani',
             cover: 'book-covers/book1.png',
-        },
-        2: {
+        }, {
             title: 'The adventure of lily',
             author: 'Hani',
             cover: 'book-covers/book1.png',
-        },
-        3: {
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }, {
             title: 'The adventure of lily',
             author: 'Hani',
             cover: 'book-covers/book1.png',
         }
 
-    }
 
+    ];
+    let count = document.getElementById('books-counter');
+    count.innerHTML = "All " + "(" + books.length + ")";
 
+    var bookSection = document.getElementById('content');
+    var resultHtml = '';
     for (let book in books) {
-        document.getElementById('book-title').innerHTML = books[book].title;
-        document.getElementById('book-author').innerHTML = books[book].author;
-        document.getElementById('book-cover').src = books[book].cover;
-        // console.log(books[book].title)
+        resultHtml += "<div class='book'><img class='book-cover' src=" + books[book].cover + " alt = 'book'><br>";
+        resultHtml += "<strong class='book-title'>" + books[book].title + "</strong><br>";
+        resultHtml += " <small class='book-author'>" + "by " + books[book].author + "</small></div>";
     }
+    bookSection.innerHTML = resultHtml;
 
     // Get the modal
     let modal = document.getElementById("myModal");
