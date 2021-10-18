@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta title="viewport" content="width=device-width, initial-scale=1.0">
     <title> Bookshelf
     </title>
 
@@ -29,13 +29,9 @@
         }
         
         .book img {
-            width: 60%;
+            width: 30%;
             height: 80%;
             /* margin: 20px; */
-        }
-        
-        .navbar {
-            /* background-color: aqua; */
         }
         
         .nav-oper {
@@ -172,43 +168,15 @@
         </div>
     </div>
 
-    <div class="content ">
-        <!-- Book 1 -->
-        <div class="book " style=" ">
-            <img src="book-covers/book.jpg " alt=" ">
+    <div class="content">
+        <!-- Book  -->
+        <div class="book">
+            <img id="book-cover" class="book-cover" src="" alt="book">
             <br>
-            <strong>The adventure of lily</strong>
+            <strong id="book-title"></strong>
+            <small id="book-author"></small>
         </div>
-        <!-- Book 2 -->
-        <div class="book " style=" ">
-            <img src="book-covers/book1.png " alt=" ">
-            <br>
-            <strong>The adventure of lily</strong>
-        </div>
-        <!-- Book 3 -->
-        <div class="book " style=" ">
-            <img src="book-covers/book2.png " alt=" ">
-            <br>
-            <strong>The adventure of lily</strong>
-        </div>
-        <!-- Book 4 -->
-        <div class="book " style=" ">
-            <img src="book-covers/book3.png " alt=" ">
-            <br>
-            <strong>The adventure of lily</strong>
-        </div>
-        <!-- Book 5 -->
-        <div class="book " style=" ">
-            <img src="book-covers/book4.png " alt=" ">
-            <br>
-            <strong>The adventure of lily</strong>
-        </div>
-        <!-- Book 6 -->
-        <div class="book " style=" ">
-            <img src="book-covers/book5.png " alt=" ">
-            <br>
-            <strong>The adventure of lily</strong>
-        </div>
+
     </div>
 
 
@@ -224,17 +192,17 @@
             <div style="text-align: center;">
                 <h1> Add new book</h1>
             </div>
-            <form method="post" name="Form" onsubmit="return validateForm()" action="">
+            <form method="post" title="Form" onsubmit="return validateForm()" action="">
                 <div style="display: inline-grid;">
-                    <!-- Book name -->
-                    <label for="name">Book name:</label>
-                    <input type="text" id="name" name="name">
-                    <!-- Author name -->
-                    <label for="author">Author name:</label>
-                    <input type="text" id="author" name="author">
+                    <!-- Book title -->
+                    <label for="title">Book title:</label>
+                    <input type="text" id="title" title="title">
+                    <!-- Author title -->
+                    <label for="author">Author title:</label>
+                    <input type="text" id="author" title="author">
                     <!-- Book cover -->
                     <label for="cover">Book cover:</label>
-                    <input type="file" id="cover" name="cover" accept="image/png, image/jpeg">
+                    <input type="file" id="cover" title="cover" accept="image/png, image/jpeg">
                     <!-- Submit button -->
                     <div class="modal-button">
                         <button id="add-btn" class="add-book" type="submit">Add Book</button>
@@ -255,6 +223,33 @@
     //     console.log('clicked button');
     // });
 
+    let books = {
+        1: {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        },
+        2: {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        },
+        3: {
+            title: 'The adventure of lily',
+            author: 'Hani',
+            cover: 'book-covers/book1.png',
+        }
+
+    }
+
+
+    for (let book in books) {
+        document.getElementById('book-title').innerHTML = books[book].title;
+        document.getElementById('book-author').innerHTML = books[book].author;
+        document.getElementById('book-cover').src = books[book].cover;
+        // console.log(books[book].title)
+    }
+
     // Get the modal
     let modal = document.getElementById("myModal");
 
@@ -273,33 +268,36 @@
 
 
     function validateForm() {
-
-        let name = document.forms["Form"]["name"].value;
+        let book = [];
+        let title = document.forms["Form"]["title"].value;
         let author = document.forms["Form"]["author"].value;
         let cover = document.forms["Form"]["cover"].value;
-        if (name == null || name == "", author == null || author == "", cover == null || cover == "") {
+        if (title == null || title == "", author == null || author == "", cover == null || cover == "") {
             alert("Please Fill All Required Field");
             return false;
-        } else {
-
         }
     }
 
     create.addEventListener('click', event => {
-
+        event.preventDefault();
+        // book = validateForm();
+        let books = [];
+        let title = document.forms["Form"]["title"].value;
+        let author = document.forms["Form"]["author"].value;
+        let cover = document.forms["Form"]["cover"].value;
+        books["book 1"]["title"] = title;
+        books["book 1"]["author"] = author;
+        books["book 1"]["cover"] = author;
+        // book[1] = author;
+        // book[2] = cover;
+        console.log(books);
     });
 
 
-    let books = {
-        1: {
-            name: 'book 1',
-            author: 'Hani',
-            author: 'book-covers/book1.png',
-        }
-
-    }
 
 
+    // let title = document.getElementById('title');
+    // title.innerHTML = books[1].title;
 
 
 
@@ -316,4 +314,5 @@
         modal.style.display = "none";
 
     });
+</script>
 </script>
