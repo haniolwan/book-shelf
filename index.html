@@ -23,15 +23,18 @@
         
         .content {
             margin-top: 40px;
-            margin-left: 80px;
+            margin-left: 90px;
             display: grid;
-            grid-template-columns: auto auto auto auto auto;
+            /* grid-template-columns: auto auto auto auto auto; */
         }
         
-        img {
-            width: 36%;
-            /* height: 80%; */
-            /* margin: 20px; */
+        .book {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .book img {
+            width: 20%;
         }
         
         .nav-oper {
@@ -185,17 +188,17 @@
             <div style="text-align: center;">
                 <h1> Add new book</h1>
             </div>
-            <form method="post" title="Form" onsubmit="return validateForm()" action="">
+            <form method="post" title="Form" onsubmit="return false" ction="">
                 <div style="display: inline-grid;">
                     <!-- Book title -->
                     <label for="title">Book title:</label>
-                    <input type="text" id="title" title="title">
+                    <input type="text" id="title" name="title">
                     <!-- Author title -->
-                    <label for="author">Author title:</label>
-                    <input type="text" id="author" title="author">
+                    <label for="author">Author name:</label>
+                    <input type="text" id="author" name="author">
                     <!-- Book cover -->
                     <label for="cover">Book cover:</label>
-                    <input type="file" id="cover" title="cover" accept="image/png, image/jpeg">
+                    <input type="file" id="cover" name="cover" accept="image/png, image/jpeg">
                     <!-- Submit button -->
                     <div class="modal-button">
                         <button id="add-btn" class="add-book" type="submit">Add Book</button>
@@ -219,70 +222,96 @@
         }, {
             title: 'The adventure of lily',
             author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }
-
-
+            cover: 'book-covers/book2.png',
+        },
+        // {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book3.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book4.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book5.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book6.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book7.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book8.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book9.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book10.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book1.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book1.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book1.png',
+        // }, {
+        //     title: 'The adventure of lily',
+        //     author: 'Hani',
+        //     cover: 'book-covers/book1.png',
     ];
+
+    // Print all books on reload
+    printBooks();
+
+    // Create a new book
+    let create = document.getElementById('add-btn');
+    create.onclick = function() {
+        let title = document.getElementById('title').value;
+        let author = document.getElementById('author').value;
+        let cover = document.getElementById('cover').files[0].name;
+        if (title == null || title == "", author == null || author == "", cover == null || cover == "") {
+            alert("Please Fill All Required Field");
+        } else {
+            books.push({
+                title: title,
+                author: author,
+                cover: cover
+            });
+            modal.style.display = "none";
+
+        }
+        printBooks();
+    }
+
+
+    function printBooks() {
+        var bookSection = document.getElementById('content');
+        var resultHtml = '';
+        for (let book in books) {
+            resultHtml += "<div class='book'><img class='book-cover' src=" + books[book].cover + " alt = 'book'><br>";
+            resultHtml += "<strong class='book-title'>" + books[book].title + "</strong><br>";
+            resultHtml += " <small class='book-author'>" + "by " + books[book].author + "</small></div>";
+        }
+        bookSection.innerHTML = resultHtml;
+    }
+
+    // Count books
     let count = document.getElementById('books-counter');
     count.innerHTML = "All " + "(" + books.length + ")";
-
-    var bookSection = document.getElementById('content');
-    var resultHtml = '';
-    for (let book in books) {
-        resultHtml += "<div class='book'><img class='book-cover' src=" + books[book].cover + " alt = 'book'><br>";
-        resultHtml += "<strong class='book-title'>" + books[book].title + "</strong><br>";
-        resultHtml += " <small class='book-author'>" + "by " + books[book].author + "</small></div>";
-    }
-    bookSection.innerHTML = resultHtml;
 
     // Get the modal
     let modal = document.getElementById("myModal");
@@ -293,45 +322,35 @@
     // Close modal 
     let close = document.getElementById('close-modal');
 
-    let create = document.getElementById('add-btn');
-
     // When the user clicks on the button, open the modal
     btn.onclick = function() {
         modal.style.display = "block";
     }
 
 
-    function validateForm() {
-        let book = [];
-        let title = document.forms["Form"]["title"].value;
-        let author = document.forms["Form"]["author"].value;
-        let cover = document.forms["Form"]["cover"].value;
-        if (title == null || title == "", author == null || author == "", cover == null || cover == "") {
-            alert("Please Fill All Required Field");
-            return false;
-        }
-    }
 
-    create.addEventListener('click', event => {
-        event.preventDefault();
-        // book = validateForm();
-        let books = [];
-        let title = document.forms["Form"]["title"].value;
-        let author = document.forms["Form"]["author"].value;
-        let cover = document.forms["Form"]["cover"].value;
-        books["book 1"]["title"] = title;
-        books["book 1"]["author"] = author;
-        books["book 1"]["cover"] = author;
-        // book[1] = author;
-        // book[2] = cover;
-        console.log(books);
-    });
+    // Validate add book form
+    // function validateForm() {
+    //     let title = document.getElementById('title').value;
+    //     let author = document.getElementById('author').value;
+    //     let cover = document.getElementById('cover').value;
+    //     if (title == null || title == "", author == null || author == "", cover == null || cover == "") {
+    //         // alert("Please Fill All Required Field");
+    //         return false;
+    //     } else {
+    //         // event.preventDefault();
+    //         books.push({
+    //             title: title,
+    //             author: author,
+    //             cover: cover
+    //         });
+    //         // console.log(books);
+    //         modal.style.display = "none";
+    //         // return books;
+    //     }
+    // }
 
 
-
-
-    // let title = document.getElementById('title');
-    // title.innerHTML = books[1].title;
 
 
 
