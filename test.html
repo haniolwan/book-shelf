@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function alphabetPosition(text) {
+        result = "";
+        for (let i = 0; i < text.length; i++) {
+            result += text.charAt(i).toLowerCase().charCodeAt(0) - 96 + " ";
+        }
+
+        return result;
+    }
+    console.log(alphabetPosition("The sunset sets at twelve o' clock."));
+    // console.log(alphabetPosition("Hani"));
+
+    // const numToSeparate = 12345;
+
+    // const arrayOfDigits = Array.from(String(numToSeparate), Number);
+
+    // console.log(arrayOfDigits);
+    // console.log(Math.pow(9, 2));
+
+    // console.log('alert');
+    // function squareDigits(num) {
+
+    //     for (var i = 0; i < num.length; i++) {
+    //         console.log(num.charAt(i));
+    //     }
+
+    //     return num;
+    // }
+    // squareDigits(9119);
+</script>
+
+</html>

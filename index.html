@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 
     <style>
@@ -134,6 +136,55 @@
         .checked {
             color: orange;
         }
+        
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        /* Dropdown button on hover & focus */
+        
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: #2980B9;
+        }
+        /* The container <div> - needed to position the dropdown content */
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        /* Dropdown Content (Hidden by Default) */
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        /* Links inside the dropdown */
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        /* Change color of dropdown links on hover */
+        
+        .dropdown-content a:hover {
+            background-color: #ddd
+        }
+        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+        
+        .show {
+            display: block;
+        }
     </style>
 </head>
 
@@ -172,22 +223,11 @@
                 Sort By</strong>
         </div>
     </div>
-    <!-- The Books render -->
-    <!-- <div style="background-color:gray ;">
-        <small class='book-author'>by Hani</small>
-        <i class='fas fa-ellipsis-v' style="float: right;"></i>
-    </div> -->
+
     <div id="content" class="content">
 
     </div>
 
-    <div class="dropdown">
-        <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
-    </div>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -224,63 +264,14 @@
 
 <script>
     let books = [{
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book1.png',
-        }, {
-            title: 'The adventure of lily',
-            author: 'Hani',
-            cover: 'book-covers/book2.png',
-        },
-        // {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book3.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book4.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book5.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book6.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book7.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book8.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book9.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book10.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book1.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book1.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book1.png',
-        // }, {
-        //     title: 'The adventure of lily',
-        //     author: 'Hani',
-        //     cover: 'book-covers/book1.png',
-    ];
+        title: 'HYPOCRITE WORLD',
+        author: 'Sophia Hill',
+        cover: 'book-covers/book5.png',
+    }, {
+        title: 'BULLET JOURNALING',
+        author: 'Alfredo Torres',
+        cover: 'book-covers/book2.png',
+    }, ];
 
     // Print all books on reload
     printBooks();
@@ -299,6 +290,7 @@
                 author: author,
                 cover: cover
             });
+            // localStorage.setItem(books);
             modal.style.display = "none";
 
         }
@@ -311,8 +303,9 @@
         var resultHtml = '';
         for (let book in books) {
             resultHtml += "<div class='book'><img class='book-cover' src=" + books[book].cover + " alt = 'book'><br>";
-            resultHtml += "<div style='width:40%;margin-top:10px'><strong class='book-title'>" + books[book].title + "</strong><a href=''><i class='fas fa-ellipsis-v' style='float:right'></i></a></div>";
+            resultHtml += "<div style='width:40%;margin-top:10px'><strong class='book-title'>" + books[book].title + "</strong><a class='actionbtn'><div class='dropdown' style='display:none'><div class='myDropdown' class='dropdown-content'><a href='#'>Link 1</a></div></div><i onclick='myFunction()' class='fas fa-ellipsis-v' style='float:right'></i></a></div>";
             resultHtml += " <small class='book-author'>" + "by " + books[book].author + "</small></div>";
+
         }
         bookSection.innerHTML = resultHtml;
     }
@@ -334,34 +327,6 @@
     btn.onclick = function() {
         modal.style.display = "block";
     }
-
-
-
-    // Validate add book form
-    // function validateForm() {
-    //     let title = document.getElementById('title').value;
-    //     let author = document.getElementById('author').value;
-    //     let cover = document.getElementById('cover').value;
-    //     if (title == null || title == "", author == null || author == "", cover == null || cover == "") {
-    //         // alert("Please Fill All Required Field");
-    //         return false;
-    //     } else {
-    //         // event.preventDefault();
-    //         books.push({
-    //             title: title,
-    //             author: author,
-    //             cover: cover
-    //         });
-    //         // console.log(books);
-    //         modal.style.display = "none";
-    //         // return books;
-    //     }
-    // }
-
-
-
-
-
 
 
     // When the user clicks anywhere outside of the modal, close it
