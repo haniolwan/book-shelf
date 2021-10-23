@@ -13,10 +13,14 @@ printBooks();
 
 // Create a new book
 let create = document.getElementById('add-btn');
+let cover = null;
 create.onclick = function() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
-    let cover = document.getElementById('cover').files[0].name;
+    let cover = document.getElementById('cover').value;
+    cover = cover.substring(cover.lastIndexOf("\\") + 1, cover.length);
+    cover = "book-covers/" + cover;
+
     if (title == null || title == "", author == null || author == "", cover == null || cover == "") {
         alert("Please Fill All Required Field");
     } else {
@@ -25,11 +29,11 @@ create.onclick = function() {
             author: author,
             cover: cover
         });
-        // localStorage.setItem(books);
         modal.style.display = "none";
     }
     printBooks();
 }
+
 
 
 function printBooks() {
